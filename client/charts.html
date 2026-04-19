@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charts — SpendMap</title>
+  <meta name="description" content="Visualise your spending with daily bar charts, category pie charts, and a cumulative spending curve.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ── Desktop Sidebar ───────────────────────────────────────── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">SpendMap <span>💸</span></div>
+  <nav class="sidebar-nav">
+    <a class="sidebar-item" data-page="dashboard" href="/dashboard.html">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Home
+    </a>
+    <a class="sidebar-item" data-page="history" href="/history.html">
+      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>History
+    </a>
+    <a class="sidebar-item" data-page="charts" href="/charts.html">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Charts
+    </a>
+    <a class="sidebar-item" data-page="map" href="/map.html">
+      <svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>Map
+    </a>
+    <a class="sidebar-item" data-page="settings" href="/settings.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="profile-avatar" id="sidebar-avatar" onclick="window.location='/settings.html'"></div>
+    <div class="sidebar-user-info">
+      <div class="sidebar-user-name"  id="sidebar-name">—</div>
+      <div class="sidebar-user-email" id="sidebar-email">—</div>
+    </div>
+  </div>
+</aside>
+
+<div class="main-content">
+
+  <button class="fab" id="fab-add" aria-label="Add expense">+</button>
+
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1 class="page-title">Spending Overview</h1>
+      <div class="profile-avatar" id="header-avatar" onclick="window.location='/settings.html'" title="Profile"></div>
+    </div>
+
+    <div class="period-toggle">
+      <button class="toggle-btn active" data-period="monthly">Monthly</button>
+      <button class="toggle-btn"        data-period="weekly">Weekly</button>
+    </div>
+
+    <!-- Charts grid: 2-col on tablet+, single col on mobile -->
+    <div class="charts-grid">
+      <div class="chart-card chart-full">
+        <div class="chart-title">Daily Spending</div>
+        <div class="chart-wrapper"><canvas id="bar-chart"></canvas></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">By Category</div>
+        <div class="chart-wrapper" style="max-width:320px;margin:0 auto">
+          <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Spending Curve</div>
+        <div class="chart-wrapper"><canvas id="line-chart"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Shared Add Expense sheet -->
+<div class="sheet-overlay" id="sheet-overlay"></div>
+<div class="bottom-sheet" id="expense-sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header" id="sheet-title">Add Expense</div>
+  <div class="sheet-body" id="sheet-body">
+    <form id="expense-form">
+      <div class="amount-input-wrap"><span class="amount-prefix">₹</span><input type="number" id="expense-amount" placeholder="0" min="1" max="99999" inputmode="decimal" required></div>
+      <div class="form-group"><label>Category</label><div class="category-pills-row" id="category-pills"></div></div>
+      <div class="form-group"><label for="expense-date">Date</label><input type="date" id="expense-date"></div>
+      <div class="form-group"><label for="expense-note">Note <span style="color:var(--color-text-disabled)">(optional)</span></label><input type="text" id="expense-note" placeholder="e.g. Lunch with friends" maxlength="100"></div>
+      <div class="form-group"><label>Location</label>
+        <div class="location-preview" id="loc-preview">
+          <span class="location-icon" id="loc-icon">📍</span>
+          <span class="location-name"  id="loc-name">Fetching location…</span>
+          <div class="location-actions">
+            <button type="button" class="loc-btn confirm hidden" id="loc-confirm">✓</button>
+            <button type="button" class="loc-btn clear   hidden" id="loc-clear">✕</button>
+          </div>
+        </div>
+      </div>
+      <div style="color:var(--color-danger);font-size:var(--text-sm);margin-bottom:14px" id="expense-error"></div>
+      <button type="submit" class="btn btn-primary btn-full" id="expense-submit">Add Expense</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Bottom nav (absolute last) ───────────────────────────── -->
+<nav class="bottom-nav">
+  <a class="nav-item" data-page="dashboard" href="/dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Home</span></a>
+  <a class="nav-item" data-page="history"   href="/history.html"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg><span>History</span></a>
+  <a class="nav-item" data-page="charts"    href="/charts.html"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Charts</span></a>
+  <a class="nav-item" data-page="map"       href="/map.html"><svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg><span>Map</span></a>
+  <a class="nav-item" data-page="settings"  href="/settings.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></a>
+</nav>
+
+<script src="/js/api.js"></script>
+<script src="/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="/js/expense.js"></script>
+<script src="/js/charts.js"></script>
+<script>
+  initExpenseSheet();
+  document.getElementById('fab-add').addEventListener('click', () => openExpenseSheet());
+  // Avatar
+  (function() {
+    renderProfileAvatar(document.getElementById('header-avatar'));
+    renderProfileAvatar(document.getElementById('sidebar-avatar'));
+    const u = getUser();
+    const sn = document.getElementById('sidebar-name');
+    const se = document.getElementById('sidebar-email');
+    if (sn) sn.textContent = u.name  || '—';
+    if (se) se.textContent = u.email || '—';
+  })();
+</script>
+</body>
+</html>
