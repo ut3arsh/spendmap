@@ -24,7 +24,7 @@ async function apiRequest(method, endpoint, body = null) {
     if (res.status === 401) {
       localStorage.removeItem('sm_token');
       localStorage.removeItem('sm_user');
-      window.location.href = '/index.html';
+      window.location.href = '/login.html';
       return;
     }
 

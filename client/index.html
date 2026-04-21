@@ -1,161 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpendMap — Login</title>
-  <meta name="description" content="SpendMap: Track your daily expenses visually. Built for college students on a budget.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
 
-<div class="auth-page">
-
-  <!-- Branding -->
-  <div style="text-align:center">
-    <div class="auth-logo">Spend<span>Map</span> 💸</div>
-    <div class="auth-tagline">Track where it all went.<br>No lectures. No judgment.</div>
-  </div>
-
-  <!-- Auth Card -->
-  <div class="auth-card">
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tab-login"  onclick="switchTab('login')">Login</button>
-      <button class="auth-tab"        id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
-    </div>
-
-    <!-- LOGIN -->
-    <form class="auth-form active" id="form-login" onsubmit="handleLogin(event)">
-      <div class="form-group">
-        <label for="login-email">Email</label>
-        <input type="email" id="login-email" placeholder="you@example.com" required autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
-      </div>
-      <button type="submit" class="btn btn-primary btn-full" id="login-btn">Login</button>
-      <div class="error-msg" id="login-error"></div>
-    </form>
-
-    <!-- SIGNUP -->
-    <form class="auth-form" id="form-signup" onsubmit="handleSignup(event)">
-      <div class="form-group">
-        <label for="signup-name">Full Name</label>
-        <input type="text" id="signup-name" placeholder="Your name" required autocomplete="name">
-      </div>
-      <div class="form-group">
-        <label for="signup-email">Email</label>
-        <input type="email" id="signup-email" placeholder="you@example.com" required autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="signup-password">Password</label>
-        <input type="password" id="signup-password" placeholder="Minimum 8 characters" required autocomplete="new-password">
-      </div>
-      <button type="submit" class="btn btn-primary btn-full" id="signup-btn">Create Account</button>
-      <div class="error-msg" id="signup-error"></div>
-    </form>
-  </div>
-
-</div>
-
-<!-- Onboarding Modal (shown after first signup) -->
-<div class="modal-overlay" id="onboarding-overlay">
-  <div class="modal">
-    <div class="modal-title">Set up your SpendMap 🗺️</div>
-    <div class="modal-subtitle">30 seconds. Everything can be changed later in Settings.</div>
-    <form onsubmit="handleOnboarding(event)">
-      <div class="form-group">
-        <label for="ob-monthly">Monthly Budget (₹)</label>
-        <input type="number" id="ob-monthly" placeholder="e.g. 6000" min="0" max="999999">
-      </div>
-      <div class="form-group">
-        <label for="ob-weekly">Weekly Budget (₹) <span style="color:var(--color-text-disabled)">(optional)</span></label>
-        <input type="number" id="ob-weekly" placeholder="e.g. 1500" min="0" max="99999">
-      </div>
-      <div class="form-group">
-        <label for="ob-upi">UPI ID <span style="color:var(--color-text-disabled)">(optional — for V2 auto-tracking)</span></label>
-        <input type="text" id="ob-upi" placeholder="user@bankname">
-      </div>
-      <button type="submit" class="btn btn-primary btn-full mt-4">Get Started →</button>
-      <button type="button" class="btn btn-secondary btn-full mt-2" onclick="skipOnboarding()">Skip for now</button>
-    </form>
-  </div>
-</div>
-
-<script src="/js/api.js"></script>
-<script src="/js/app.js"></script>
-<script>
-  redirectIfLoggedIn();
-
-  function switchTab(tab) {
-    document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.id === `tab-${tab}`));
-    document.querySelectorAll('.auth-form').forEach(f => f.classList.toggle('active', f.id === `form-${tab}`));
-  }
-
-  async function handleLogin(e) {
-    e.preventDefault();
-    const btn = document.getElementById('login-btn');
-    const err = document.getElementById('login-error');
-    err.classList.remove('visible');
-    btn.disabled = true; btn.textContent = 'Logging in…';
-
-    try {
-      const data = await API.login({
-        email:    document.getElementById('login-email').value,
-        password: document.getElementById('login-password').value,
-      });
-      localStorage.setItem('sm_token', data.token);
-      saveUser(data.user);
-      window.location.href = '/dashboard.html';
-    } catch (ex) {
-      err.textContent = ex.message; err.classList.add('visible');
-      btn.disabled = false; btn.textContent = 'Login';
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SpendMap - The Electric Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#711036",
+                    "surface-container-high": "#141f38",
+                    "tertiary": "#ff97b2",
+                    "on-tertiary-fixed": "#380016",
+                    "tertiary-fixed-dim": "#f77c9e",
+                    "on-primary": "#3c0089",
+                    "surface-container-highest": "#192540",
+                    "outline": "#6d758c",
+                    "on-secondary-fixed-variant": "#6b369a",
+                    "on-secondary": "#3b0065",
+                    "primary-dim": "#8a4cfc",
+                    "secondary-fixed-dim": "#ddb3ff",
+                    "secondary-fixed": "#e6c5ff",
+                    "primary-fixed": "#b28cff",
+                    "inverse-primary": "#742fe5",
+                    "primary-fixed-dim": "#a67aff",
+                    "surface-variant": "#192540",
+                    "on-surface": "#dee5ff",
+                    "on-secondary-fixed": "#4d137b",
+                    "on-primary-fixed-variant": "#390083",
+                    "on-tertiary-container": "#5a0027",
+                    "tertiary-container": "#fe81a4",
+                    "on-error-container": "#ffb2b9",
+                    "background": "#060e20",
+                    "outline-variant": "#40485d",
+                    "on-secondary-container": "#e5c4ff",
+                    "on-tertiary": "#6a0a31",
+                    "error": "#ff6e84",
+                    "error-container": "#a70138",
+                    "surface-bright": "#1f2b49",
+                    "on-error": "#490013",
+                    "error-dim": "#d73357",
+                    "surface-container-lowest": "#000000",
+                    "secondary-container": "#612b8f",
+                    "secondary": "#c38bf5",
+                    "surface-container-low": "#091328",
+                    "on-surface-variant": "#a3aac4",
+                    "inverse-surface": "#faf8ff",
+                    "tertiary-dim": "#f17799",
+                    "secondary-dim": "#be86ef",
+                    "on-primary-container": "#2e006c",
+                    "surface": "#060e20",
+                    "tertiary-fixed": "#ff8eac",
+                    "on-background": "#dee5ff",
+                    "surface-container": "#0f1930",
+                    "primary": "#bd9dff",
+                    "surface-tint": "#bd9dff",
+                    "inverse-on-surface": "#4d556b",
+                    "surface-dim": "#060e20",
+                    "on-primary-fixed": "#000000",
+                    "primary-container": "#b28cff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0F0F14; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .power-gradient { background: linear-gradient(135deg, #bd9dff 0%, #8a4cfc 100%); }
+        .glass-header { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .neon-glow { filter: drop-shadow(0 0 15px rgba(189, 157, 255, 0.2)); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
     }
-  }
+  </style>
+  </head>
+<body class="text-on-surface selection:bg-primary/30 antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-lg shadow-violet-500/5">
+<nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-inter antialiased tracking-tight">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-violet-400" data-icon="insights">insights</span>
+<span class="text-2xl font-black tracking-tighter text-slate-100">SpendMap</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-violet-400 font-semibold border-b-2 border-violet-500 transition-all" href="#">Features</a>
+</div>
+<button onclick="window.location.href='/login.html'" class="bg-violet-500 hover:bg-violet-400 text-slate-950 px-5 py-2 rounded-full font-bold transition-all active:scale-95 duration-200 ease-out">
+                Get Started
+            </button>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-6 py-20 md:py-32 flex flex-col items-center text-center overflow-hidden">
+<!-- Kinetic Depth Background -->
+<div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#7C3AED]/15 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+<div class="max-w-4xl mx-auto relative">
+<h1 class="text-5xl md:text-8xl font-black tracking-tighter text-on-surface leading-[0.95] mb-8">
+                    Your money. <br/><span class="text-transparent bg-clip-text power-gradient">Mapped.</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Most expense apps tell you to spend less. SpendMap just shows you where it all went.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button onclick="window.location.href='/login.html'" class="power-gradient text-on-primary font-black px-10 py-5 rounded-full text-lg w-full sm:w-auto shadow-xl shadow-primary/20 active:scale-95 transition-transform">
+                        Get Started
+                    </button>
+<button onclick="window.location.href='/login.html'" class="bg-surface-container-highest text-primary font-bold px-10 py-5 rounded-full text-lg w-full sm:w-auto border border-primary/10 hover:bg-surface-bright transition-colors">
+                        Log In
+                    </button>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="mt-20 relative w-full max-w-5xl">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30">
+<img alt="Financial Dashboard" class="w-full object-cover aspect-video md:aspect-[21/9]" data-alt="Modern dark mode fintech dashboard interface showing violet glow charts and neon line graphs of university student spending" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_FApwUA-8P7-8OqugYmVA27B9as3HXftj9sunM-_OK6WdS3o1M0zkt0oysuHyXgWSySmD1gDfI_0lMHrbWGfvJhGiG-Es25xbxukPBr1-rXca6wlOZZNTtIDAPK0wyABj9uejTe2FuaXdofBfh2lRmCZAJaZv-oXMilPcJ6rjk8j5UfXvLb8nbL5oR7avW_FWe9l-dMKsvpCZWPFcKJtBA5mkBVqtsyX2zKGUNgNKDY7gQpQz8PSbsphEVHhfXjrWvAUoVie6BSvz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Floating Elements for Kinetic Depth -->
+<div class="absolute -top-10 -right-5 md:right-10 bg-surface-container-high p-4 rounded-xl shadow-2xl border border-primary/20 hidden sm:block">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<div class="text-left">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Top Category</p>
+<p class="text-sm font-bold">Late Night Ramen</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  async function handleSignup(e) {
-    e.preventDefault();
-    const btn = document.getElementById('signup-btn');
-    const err = document.getElementById('signup-error');
-    err.classList.remove('visible');
-    btn.disabled = true; btn.textContent = 'Creating account…';
+<!-- Origin Story -->
+<section class="py-12 bg-surface-container-low border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<p class="text-on-surface-variant text-base md:text-lg font-medium tracking-wide">Built by a student, for students. Because ₹2,700 disappeared in half a month and nobody could explain where.</p>
+</div>
+</section>
 
-    try {
-      const data = await API.signup({
-        name:     document.getElementById('signup-name').value,
-        email:    document.getElementById('signup-email').value,
-        password: document.getElementById('signup-password').value,
-      });
-      localStorage.setItem('sm_token', data.token);
-      saveUser(data.user);
-      document.getElementById('onboarding-overlay').classList.add('open');
-    } catch (ex) {
-      err.textContent = ex.message; err.classList.add('visible');
-      btn.disabled = false; btn.textContent = 'Create Account';
-    }
-  }
+<!-- Features Section (Bento Grid) -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">Financial Autonomy.</h2>
+<p class="text-on-surface-variant text-lg">Designed for the unique cadence of academic years and tuition cycles.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Feature 1 -->
+<div class="md:col-span-8 bg-surface-container-high rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] group-hover:bg-primary/20 transition-colors"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl power-gradient flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<h3 class="text-3xl font-extrabold mb-4">Student-First Budgeting</h3>
+<p class="text-on-surface-variant text-lg max-w-md">Split your meal plans, tuition payments, and social life into distinct, manageable buckets that make sense for campus life.</p>
+</div>
+<div class="mt-12">
+<img alt="Feature visual" class="rounded-xl w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Minimalist glassmorphic mobile cards showing expense categories like coffee, books, and rent with violet progress bars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_4iZaMbjm5AXKVeP6AqgWmYGplr2Zaw4gMX5eEIUovryyLfqQ456h7uJkU3TIRRkQQEqRSh08TipLB83y0wE9ImT7ZnJsblrZYgeQAvLc7NGzd9t13rf0kHzuuBWSG1zmEpvmYS8oSvOaDMJp8jCQ1YpDgWyZc-819oyGHJG0zMSmRT2WAFyT7mFvhtCbi5-HIWGn4hs2WIkZ_at8jqy39oavvE78b9ZchSi2WOMRZoMjbzUXEZGYlcPsXWuzD2azOXtlJCMX9l5-"/>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-4 bg-surface-container rounded-3xl p-10 flex flex-col border border-outline-variant/20">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<h3 class="text-2xl font-extrabold mb-4">Visual Spending Maps</h3>
+<p class="text-on-surface-variant">See a geographic heat map of where your money is actually going. Is it that one coffee shop on the corner? SpendMap knows.</p>
+<div class="mt-auto pt-10">
+<div class="w-full h-32 bg-surface-container-low rounded-2xl border border-outline-variant/10 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all" data-alt="Abstract map visualization with glowing violet heat nodes representing high spending locations in an urban area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdktpOcpsC0n63H4VkY9jfaPq5tcREgWhp3KIAZQOx85hgKK74ba1beQ5bnX1cofDPpldBdyiMCWBjp_9tpIZhP0j_BTj2ioCPXCZUA9VpGPFliSRG-Xex68EO8hlnRXCqCyd8UcU2lwA_NTJS90qTr0d3Mga48MfVfDptOEvzvoAH-qM-c3vYeE3AsuMOWNGMl0Fc98EAmeiSMS68So9zjqP13SU2ZJ0crc_dJNPs4HR8tXrSTg6V5RW9YmpfosaU3IQtPpQfkVZ-"/>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-4 bg-surface-container rounded-3xl p-10 flex flex-col border border-outline-variant/20">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="query_stats" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+</div>
+<h3 class="text-2xl font-extrabold mb-4 flex flex-wrap items-center gap-3">No More Guesswork <span class="text-[10px] font-bold px-2.5 py-1 bg-surface-container-highest text-primary border border-primary/20 rounded-full tracking-widest uppercase opacity-80">Coming Soon</span></h3>
+<p class="text-on-surface-variant">AI-driven insights that predict your end-of-month balance based on current semester trends. Stay ahead of the curve.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-8 bg-surface-bright rounded-3xl p-10 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative">
+<div class="z-10">
+<h3 class="text-3xl font-extrabold mb-4 text-on-surface flex flex-wrap items-center gap-3">Universal Integration <span class="text-[10px] font-bold px-2.5 py-1 bg-surface-container-highest text-primary border border-primary/20 rounded-full tracking-widest uppercase opacity-80">Coming Soon</span></h3>
+<p class="text-on-surface-variant text-lg">Connect your bank, venmo, and campus card in under 60 seconds. High-security encryption keeps your data yours.</p>
+<button class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                            Learn more about security <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="w-full md:w-1/2 flex justify-center">
+<div class="grid grid-cols-2 gap-4">
+<div class="w-20 h-20 bg-surface-container-highest rounded-2xl flex items-center justify-center"><span class="material-symbols-outlined text-3xl opacity-50">shield</span></div>
+<div class="w-20 h-20 bg-surface-container-highest rounded-2xl flex items-center justify-center"><span class="material-symbols-outlined text-3xl opacity-50">lock</span></div>
+<div class="w-20 h-20 bg-surface-container-highest rounded-2xl flex items-center justify-center"><span class="material-symbols-outlined text-3xl opacity-50">data_thresholding</span></div>
+<div class="w-20 h-20 bg-surface-container-highest rounded-2xl flex items-center justify-center"><span class="material-symbols-outlined text-3xl opacity-50">verified_user</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  async function handleOnboarding(e) {
-    e.preventDefault();
-    try {
-      await API.updateProfile({
-        monthlyBudget:      Number(document.getElementById('ob-monthly').value) || 0,
-        weeklyBudget:       Number(document.getElementById('ob-weekly').value)  || 0,
-        upiId:              document.getElementById('ob-upi').value || '',
-        onboardingComplete: true,
-      });
-    } catch { /* non-blocking */ }
-    window.location.href = '/dashboard.html';
-  }
-
-  function skipOnboarding() {
-    API.updateProfile({ onboardingComplete: true }).catch(() => {});
-    window.location.href = '/dashboard.html';
-  }
-</script>
-</body>
-</html>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full py-12 border-t border-slate-800/50">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6 font-inter text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-violet-500" data-icon="insights">insights</span>
+<span class="text-lg font-bold text-slate-200">SpendMap</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-8">
+<a class="text-slate-500 hover:text-violet-300 transition-colors cursor-pointer" href="#">Features</a>
+</div>
+<p class="text-slate-500 text-center md:text-right">
+                © 2026 SpendMap. Built by Utkarsh Anand.
+            </p>
+</div>
+</footer>
+</body></html>

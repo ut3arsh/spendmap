@@ -6,7 +6,7 @@
 
 function requireAuth() {
   if (!localStorage.getItem('sm_token')) {
-    window.location.href = '/index.html';
+    window.location.href = '/login.html';
     return false;
   }
   return true;
@@ -32,7 +32,7 @@ function saveUser(user) {
 function logout() {
   localStorage.removeItem('sm_token');
   localStorage.removeItem('sm_user');
-  window.location.href = '/index.html';
+  window.location.href = '/login.html';
 }
 
 // ── Currency formatter ────────────────────────────────────────

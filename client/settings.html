@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,347 +11,391 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
-<!-- ── Desktop Sidebar ───────────────────────────────────────── -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">SpendMap <span>💸</span></div>
-  <nav class="sidebar-nav">
-    <a class="sidebar-item" data-page="dashboard" href="/dashboard.html">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Home
-    </a>
-    <a class="sidebar-item" data-page="history" href="/history.html">
-      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>History
-    </a>
-    <a class="sidebar-item" data-page="charts" href="/charts.html">
-      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Charts
-    </a>
-    <a class="sidebar-item" data-page="map" href="/map.html">
-      <svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>Map
-    </a>
-    <a class="sidebar-item" data-page="settings" href="/settings.html">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings
-    </a>
+  <!-- ── Desktop Sidebar ───────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo" style="display: flex; align-items: center;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-item" data-page="dashboard" href="/dashboard.html">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+        </svg>Home
+      </a>
+      <a class="sidebar-item" data-page="history" href="/history.html">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+          <rect x="9" y="3" width="6" height="4" rx="1" />
+          <path d="M9 12h6M9 16h4" />
+        </svg>History
+      </a>
+      <a class="sidebar-item" data-page="charts" href="/charts.html">
+        <svg viewBox="0 0 24 24">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+        </svg>Charts
+      </a>
+      <a class="sidebar-item" data-page="map" href="/map.html">
+        <svg viewBox="0 0 24 24">
+          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+          <line x1="9" y1="3" x2="9" y2="18" />
+          <line x1="15" y1="6" x2="15" y2="21" />
+        </svg>Map
+      </a>
+      <a class="sidebar-item" data-page="settings" href="/settings.html">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+        </svg>Settings
+      </a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="profile-avatar" id="sidebar-avatar"></div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name" id="sidebar-name">—</div>
+        <div class="sidebar-user-email" id="sidebar-email">—</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main content ──────────────────────────────────────────── -->
+  <div class="main-content">
+    <div class="page-wrapper">
+
+      <div class="page-header">
+        <h1 class="page-title">Settings</h1>
+        <div class="profile-avatar" id="header-avatar" title="Your profile photo"></div>
+      </div>
+
+      <!-- ── Profile Photo ──────────────────────────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Profile Photo</div>
+        <div class="card" style="display:flex;align-items:center;gap:var(--space-5)">
+          <div class="profile-avatar" id="photo-preview" style="width:64px;height:64px;font-size:1.6rem"></div>
+          <div style="flex:1">
+            <div style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-3)">
+              Upload a photo or your initial will be shown.
+            </div>
+            <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+              <label class="btn btn-secondary btn-sm" for="photo-input" style="cursor:pointer">
+                📷 Choose Photo
+              </label>
+              <input type="file" id="photo-input" accept="image/*" style="display:none">
+              <button class="btn btn-secondary btn-sm" id="remove-photo-btn" style="display:none">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Profile info ───────────────────────────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Profile</div>
+        <div class="card">
+          <div class="form-group">
+            <label for="s-name">Name</label>
+            <input type="text" id="s-name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="s-email">Email</label>
+            <input type="email" id="s-email" placeholder="you@example.com">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label for="s-upi">UPI ID <span style="color:var(--color-text-disabled)">(optional — V2
+                auto-tracking)</span></label>
+            <input type="text" id="s-upi" placeholder="user@bankname">
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Budget ─────────────────────────────────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Budget &amp; Map</div>
+        <div class="card">
+          <div class="form-group">
+            <label for="s-monthly">Monthly Budget (₹)</label>
+            <input type="number" id="s-monthly" placeholder="e.g. 6000" min="0">
+          </div>
+          <div class="form-group">
+            <label for="s-weekly">Weekly Budget (₹)</label>
+            <input type="number" id="s-weekly" placeholder="e.g. 1500" min="0">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label for="s-threshold">Map Threshold (₹)</label>
+            <input type="number" id="s-threshold" placeholder="e.g. 500" min="1">
+            <div style="font-size:var(--text-xs);color:var(--color-text-disabled);margin-top:6px">
+              Locations below this amount show green on the map.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-full" id="save-profile-btn" style="margin-bottom:var(--space-6)">
+        Save Changes
+      </button>
+
+      <!-- ── Custom Categories ──────────────────────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Custom Categories <span style="color:var(--color-text-disabled)">(max
+            3)</span></div>
+        <div class="card">
+          <div class="custom-cat-list" id="custom-cat-list"></div>
+          <div id="add-cat-row" style="display:flex;gap:8px;margin-top:14px">
+            <input type="text" id="new-cat-input" placeholder="New category name" maxlength="20" style="flex:1">
+            <button class="btn btn-secondary btn-sm" id="add-cat-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Appearance (Dark Mode moved here) ─────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Appearance</div>
+        <div class="settings-row">
+          <div>
+            <div style="font-size:var(--text-sm);font-weight:var(--weight-medium)">Light Mode</div>
+            <div style="font-size:var(--text-xs);color:var(--color-text-secondary);margin-top:2px">Switch to light theme
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="light-mode-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ── Danger zone ────────────────────────────────────────── -->
+      <div class="settings-section">
+        <div class="settings-section-title">Danger Zone</div>
+        <button class="btn btn-danger btn-full" id="delete-data-btn" style="margin-bottom:var(--space-3)">
+          Delete All Expenses
+        </button>
+        <button class="btn btn-secondary btn-full" id="logout-btn">
+          Log Out
+        </button>
+      </div>
+
+    </div><!-- /.page-wrapper -->
+  </div><!-- /.main-content -->
+
+  <!-- Delete all confirm modal -->
+  <div class="modal-overlay" id="delete-modal" style="align-items:center">
+    <div class="modal" style="max-width:320px;text-align:center">
+      <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
+      <div class="modal-title" style="font-size:var(--text-lg)">Delete all data?</div>
+      <div class="modal-subtitle">This permanently deletes ALL your expenses. This cannot be undone.</div>
+      <div style="display:flex;gap:12px">
+        <button class="btn btn-secondary btn-full"
+          onclick="document.getElementById('delete-modal').classList.remove('open')">Cancel</button>
+        <button class="btn btn-danger btn-full" id="confirm-delete-all">Delete All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bottom nav (absolute last — mobile/tablet only) ────────── -->
+  <nav class="bottom-nav">
+    <a class="nav-item" data-page="dashboard" href="/dashboard.html"><svg viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1" />
+        <rect x="14" y="3" width="7" height="7" rx="1" />
+        <rect x="14" y="14" width="7" height="7" rx="1" />
+        <rect x="3" y="14" width="7" height="7" rx="1" />
+      </svg><span>Home</span></a>
+    <a class="nav-item" data-page="history" href="/history.html"><svg viewBox="0 0 24 24">
+        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+        <rect x="9" y="3" width="6" height="4" rx="1" />
+        <path d="M9 12h6M9 16h4" />
+      </svg><span>History</span></a>
+    <a class="nav-item" data-page="charts" href="/charts.html"><svg viewBox="0 0 24 24">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      </svg><span>Charts</span></a>
+    <a class="nav-item" data-page="map" href="/map.html"><svg viewBox="0 0 24 24">
+        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+        <line x1="9" y1="3" x2="9" y2="18" />
+        <line x1="15" y1="6" x2="15" y2="21" />
+      </svg><span>Map</span></a>
+    <a class="nav-item" data-page="settings" href="/settings.html"><svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" />
+        <path
+          d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+      </svg><span>Settings</span></a>
   </nav>
-  <div class="sidebar-user">
-    <div class="profile-avatar" id="sidebar-avatar"></div>
-    <div class="sidebar-user-info">
-      <div class="sidebar-user-name"  id="sidebar-name">—</div>
-      <div class="sidebar-user-email" id="sidebar-email">—</div>
-    </div>
-  </div>
-</aside>
 
-<!-- ── Main content ──────────────────────────────────────────── -->
-<div class="main-content">
-  <div class="page-wrapper">
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    if (!requireAuth()) { /* redirected */ }
 
-    <div class="page-header">
-      <h1 class="page-title">Settings</h1>
-      <div class="profile-avatar" id="header-avatar" title="Your profile photo"></div>
-    </div>
+    let customCategories = [];
 
-    <!-- ── Profile Photo ──────────────────────────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Profile Photo</div>
-      <div class="card" style="display:flex;align-items:center;gap:var(--space-5)">
-        <div class="profile-avatar" id="photo-preview" style="width:64px;height:64px;font-size:1.6rem"></div>
-        <div style="flex:1">
-          <div style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-3)">
-            Upload a photo or your initial will be shown.
-          </div>
-          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-            <label class="btn btn-secondary btn-sm" for="photo-input" style="cursor:pointer">
-              📷 Choose Photo
-            </label>
-            <input type="file" id="photo-input" accept="image/*" style="display:none">
-            <button class="btn btn-secondary btn-sm" id="remove-photo-btn" style="display:none">
-              Remove
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Profile info ───────────────────────────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Profile</div>
-      <div class="card">
-        <div class="form-group">
-          <label for="s-name">Name</label>
-          <input type="text" id="s-name" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label for="s-email">Email</label>
-          <input type="email" id="s-email" placeholder="you@example.com">
-        </div>
-        <div class="form-group" style="margin-bottom:0">
-          <label for="s-upi">UPI ID <span style="color:var(--color-text-disabled)">(optional — V2 auto-tracking)</span></label>
-          <input type="text" id="s-upi" placeholder="user@bankname">
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Budget ─────────────────────────────────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Budget &amp; Map</div>
-      <div class="card">
-        <div class="form-group">
-          <label for="s-monthly">Monthly Budget (₹)</label>
-          <input type="number" id="s-monthly" placeholder="e.g. 6000" min="0">
-        </div>
-        <div class="form-group">
-          <label for="s-weekly">Weekly Budget (₹)</label>
-          <input type="number" id="s-weekly"  placeholder="e.g. 1500" min="0">
-        </div>
-        <div class="form-group" style="margin-bottom:0">
-          <label for="s-threshold">Map Threshold (₹)</label>
-          <input type="number" id="s-threshold" placeholder="e.g. 500" min="1">
-          <div style="font-size:var(--text-xs);color:var(--color-text-disabled);margin-top:6px">
-            Locations below this amount show green on the map.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn btn-primary btn-full" id="save-profile-btn" style="margin-bottom:var(--space-6)">
-      Save Changes
-    </button>
-
-    <!-- ── Custom Categories ──────────────────────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Custom Categories <span style="color:var(--color-text-disabled)">(max 3)</span></div>
-      <div class="card">
-        <div class="custom-cat-list" id="custom-cat-list"></div>
-        <div id="add-cat-row" style="display:flex;gap:8px;margin-top:14px">
-          <input type="text" id="new-cat-input" placeholder="New category name" maxlength="20" style="flex:1">
-          <button class="btn btn-secondary btn-sm" id="add-cat-btn">Add</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Appearance (Dark Mode moved here) ─────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Appearance</div>
-      <div class="settings-row">
-        <div>
-          <div style="font-size:var(--text-sm);font-weight:var(--weight-medium)">Light Mode</div>
-          <div style="font-size:var(--text-xs);color:var(--color-text-secondary);margin-top:2px">Switch to light theme</div>
-        </div>
-        <label class="toggle-switch">
-          <input type="checkbox" id="light-mode-toggle">
-          <span class="toggle-slider"></span>
-        </label>
-      </div>
-    </div>
-
-    <!-- ── Danger zone ────────────────────────────────────────── -->
-    <div class="settings-section">
-      <div class="settings-section-title">Danger Zone</div>
-      <button class="btn btn-danger btn-full" id="delete-data-btn" style="margin-bottom:var(--space-3)">
-        Delete All Expenses
-      </button>
-      <button class="btn btn-secondary btn-full" id="logout-btn">
-        Log Out
-      </button>
-    </div>
-
-  </div><!-- /.page-wrapper -->
-</div><!-- /.main-content -->
-
-<!-- Delete all confirm modal -->
-<div class="modal-overlay" id="delete-modal" style="align-items:center">
-  <div class="modal" style="max-width:320px;text-align:center">
-    <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
-    <div class="modal-title" style="font-size:var(--text-lg)">Delete all data?</div>
-    <div class="modal-subtitle">This permanently deletes ALL your expenses. This cannot be undone.</div>
-    <div style="display:flex;gap:12px">
-      <button class="btn btn-secondary btn-full" onclick="document.getElementById('delete-modal').classList.remove('open')">Cancel</button>
-      <button class="btn btn-danger btn-full" id="confirm-delete-all">Delete All</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── Bottom nav (absolute last — mobile/tablet only) ────────── -->
-<nav class="bottom-nav">
-  <a class="nav-item" data-page="dashboard" href="/dashboard.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Home</span></a>
-  <a class="nav-item" data-page="history"   href="/history.html"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg><span>History</span></a>
-  <a class="nav-item" data-page="charts"    href="/charts.html"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Charts</span></a>
-  <a class="nav-item" data-page="map"       href="/map.html"><svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg><span>Map</span></a>
-  <a class="nav-item" data-page="settings"  href="/settings.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></a>
-</nav>
-
-<script src="/js/api.js"></script>
-<script src="/js/app.js"></script>
-<script>
-  if (!requireAuth()) { /* redirected */ }
-
-  let customCategories = [];
-
-  // ── Avatar / sidebar init ─────────────────────────────────────
-  function refreshAvatars() {
-    renderProfileAvatar(document.getElementById('header-avatar'));
-    renderProfileAvatar(document.getElementById('sidebar-avatar'));
-    renderProfileAvatar(document.getElementById('photo-preview'));
-    const u  = getUser();
-    const sn = document.getElementById('sidebar-name');
-    const se = document.getElementById('sidebar-email');
-    if (sn) sn.textContent = u.name  || '—';
-    if (se) se.textContent = u.email || '—';
-    // Show/hide remove photo button
-    const photo = u.profilePhoto || localStorage.getItem('sm_profile_photo');
-    document.getElementById('remove-photo-btn').style.display = photo ? '' : 'none';
-  }
-
-  // ── Profile photo upload ──────────────────────────────────────
-  document.getElementById('photo-input').addEventListener('change', function () {
-    const file = this.files[0];
-    if (!file) return;
-    if (file.size > 2 * 1024 * 1024) { showToast('Photo must be under 2 MB', 'error'); return; }
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target.result;
-      localStorage.setItem('sm_profile_photo', dataUrl);
-      // Persist to user object too
+    // ── Avatar / sidebar init ─────────────────────────────────────
+    function refreshAvatars() {
+      renderProfileAvatar(document.getElementById('header-avatar'));
+      renderProfileAvatar(document.getElementById('sidebar-avatar'));
+      renderProfileAvatar(document.getElementById('photo-preview'));
       const u = getUser();
-      u.profilePhoto = dataUrl;
+      const sn = document.getElementById('sidebar-name');
+      const se = document.getElementById('sidebar-email');
+      if (sn) sn.textContent = u.name || '—';
+      if (se) se.textContent = u.email || '—';
+      // Show/hide remove photo button
+      const photo = u.profilePhoto || localStorage.getItem('sm_profile_photo');
+      document.getElementById('remove-photo-btn').style.display = photo ? '' : 'none';
+    }
+
+    // ── Profile photo upload ──────────────────────────────────────
+    document.getElementById('photo-input').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) { showToast('Photo must be under 2 MB', 'error'); return; }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target.result;
+        localStorage.setItem('sm_profile_photo', dataUrl);
+        // Persist to user object too
+        const u = getUser();
+        u.profilePhoto = dataUrl;
+        saveUser(u);
+        refreshAvatars();
+        showToast('Profile photo updated ✓', 'success');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById('remove-photo-btn').addEventListener('click', () => {
+      localStorage.removeItem('sm_profile_photo');
+      const u = getUser();
+      delete u.profilePhoto;
       saveUser(u);
       refreshAvatars();
-      showToast('Profile photo updated ✓', 'success');
-    };
-    reader.readAsDataURL(file);
-  });
+      showToast('Photo removed', 'success');
+    });
 
-  document.getElementById('remove-photo-btn').addEventListener('click', () => {
-    localStorage.removeItem('sm_profile_photo');
-    const u = getUser();
-    delete u.profilePhoto;
-    saveUser(u);
-    refreshAvatars();
-    showToast('Photo removed', 'success');
-  });
+    // ── Load settings ─────────────────────────────────────────────
+    async function loadSettings() {
+      try {
+        const user = await API.getProfile();
+        // Merge server data into local user cache
+        const localUser = getUser();
+        const merged = { ...localUser, ...user };
+        saveUser(merged);
 
-  // ── Load settings ─────────────────────────────────────────────
-  async function loadSettings() {
-    try {
-      const user = await API.getProfile();
-      // Merge server data into local user cache
-      const localUser = getUser();
-      const merged    = { ...localUser, ...user };
-      saveUser(merged);
+        document.getElementById('s-name').value = user.name || '';
+        document.getElementById('s-email').value = user.email || '';
+        document.getElementById('s-upi').value = user.upiId || '';
+        document.getElementById('s-monthly').value = user.monthlyBudget || '';
+        document.getElementById('s-weekly').value = user.weeklyBudget || '';
+        document.getElementById('s-threshold').value = user.mapThreshold || 500;
 
-      document.getElementById('s-name').value      = user.name          || '';
-      document.getElementById('s-email').value     = user.email         || '';
-      document.getElementById('s-upi').value       = user.upiId         || '';
-      document.getElementById('s-monthly').value   = user.monthlyBudget || '';
-      document.getElementById('s-weekly').value    = user.weeklyBudget  || '';
-      document.getElementById('s-threshold').value = user.mapThreshold  || 500;
+        customCategories = user.customCategories || [];
+        renderCustomCats();
 
-      customCategories = user.customCategories || [];
-      renderCustomCats();
+        document.getElementById('light-mode-toggle').checked =
+          document.documentElement.classList.contains('light');
 
-      document.getElementById('light-mode-toggle').checked =
-        document.documentElement.classList.contains('light');
-
-      refreshAvatars();
-    } catch (err) {
-      showToast(err.message, 'error');
+        refreshAvatars();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
     }
-  }
 
-  function renderCustomCats() {
-    const list   = document.getElementById('custom-cat-list');
-    const addRow = document.getElementById('add-cat-row');
-    list.innerHTML = customCategories.map((cat, i) => `
+    function renderCustomCats() {
+      const list = document.getElementById('custom-cat-list');
+      const addRow = document.getElementById('add-cat-row');
+      list.innerHTML = customCategories.map((cat, i) => `
       <div class="custom-cat-tag">
         <span>${cat}</span>
         <button class="custom-cat-delete" onclick="removeCustomCat(${i})" title="Remove">×</button>
       </div>`).join('');
-    addRow.style.display = customCategories.length >= 3 ? 'none' : 'flex';
-  }
-
-  async function removeCustomCat(i) {
-    customCategories.splice(i, 1);
-    renderCustomCats();
-    try {
-      await API.updateCategories(customCategories);
-      showToast('Category removed', 'success');
-    } catch (err) { showToast(err.message, 'error'); }
-  }
-
-  document.getElementById('add-cat-btn').addEventListener('click', async () => {
-    const input = document.getElementById('new-cat-input');
-    const name  = input.value.trim();
-    if (!name) return;
-    if (customCategories.length >= 3)         { showToast('Maximum 3 custom categories', 'error'); return; }
-    if (customCategories.includes(name) || PRESET_CATEGORIES.includes(name)) { showToast('Category already exists', 'error'); return; }
-    customCategories.push(name);
-    input.value = '';
-    renderCustomCats();
-    try {
-      await API.updateCategories(customCategories);
-      showToast('Category added', 'success');
-    } catch (err) { showToast(err.message, 'error'); }
-  });
-
-  document.getElementById('new-cat-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('add-cat-btn').click();
-  });
-
-  document.getElementById('save-profile-btn').addEventListener('click', async () => {
-    const btn = document.getElementById('save-profile-btn');
-    btn.disabled = true; btn.textContent = 'Saving…';
-    try {
-      const updated = await API.updateProfile({
-        name:          document.getElementById('s-name').value,
-        email:         document.getElementById('s-email').value,
-        upiId:         document.getElementById('s-upi').value,
-        monthlyBudget: Number(document.getElementById('s-monthly').value)   || 0,
-        weeklyBudget:  Number(document.getElementById('s-weekly').value)    || 0,
-        mapThreshold:  Number(document.getElementById('s-threshold').value) || 500,
-      });
-      // Update cached user name so greeting/avatar refresh immediately
-      const u = getUser();
-      u.name  = document.getElementById('s-name').value;
-      u.email = document.getElementById('s-email').value;
-      saveUser(u);
-      refreshAvatars();
-      showToast('Settings saved ✓', 'success');
-    } catch (err) { showToast(err.message, 'error'); }
-    btn.disabled = false; btn.textContent = 'Save Changes';
-  });
-
-  // ── Dark mode toggle (moved here from dashboard header) ───────
-  document.getElementById('light-mode-toggle').addEventListener('change', function () {
-    if (this.checked) {
-      document.documentElement.classList.add('light');
-      localStorage.setItem('sm_theme', 'light');
-    } else {
-      document.documentElement.classList.remove('light');
-      localStorage.setItem('sm_theme', 'dark');
+      addRow.style.display = customCategories.length >= 3 ? 'none' : 'flex';
     }
-  });
 
-  document.getElementById('delete-data-btn').addEventListener('click', () =>
-    document.getElementById('delete-modal').classList.add('open')
-  );
+    async function removeCustomCat(i) {
+      customCategories.splice(i, 1);
+      renderCustomCats();
+      try {
+        await API.updateCategories(customCategories);
+        showToast('Category removed', 'success');
+      } catch (err) { showToast(err.message, 'error'); }
+    }
 
-  document.getElementById('confirm-delete-all').addEventListener('click', async () => {
-    try {
-      await API.deleteAllData();
-      document.getElementById('delete-modal').classList.remove('open');
-      showToast('All expenses deleted', 'success');
-    } catch (err) { showToast(err.message, 'error'); }
-  });
+    document.getElementById('add-cat-btn').addEventListener('click', async () => {
+      const input = document.getElementById('new-cat-input');
+      const name = input.value.trim();
+      if (!name) return;
+      if (customCategories.length >= 3) { showToast('Maximum 3 custom categories', 'error'); return; }
+      if (customCategories.includes(name) || PRESET_CATEGORIES.includes(name)) { showToast('Category already exists', 'error'); return; }
+      customCategories.push(name);
+      input.value = '';
+      renderCustomCats();
+      try {
+        await API.updateCategories(customCategories);
+        showToast('Category added', 'success');
+      } catch (err) { showToast(err.message, 'error'); }
+    });
 
-  document.getElementById('delete-modal').addEventListener('click', function (e) {
-    if (e.target === this) this.classList.remove('open');
-  });
+    document.getElementById('new-cat-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('add-cat-btn').click();
+    });
 
-  document.getElementById('logout-btn').addEventListener('click', logout);
+    document.getElementById('save-profile-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('save-profile-btn');
+      btn.disabled = true; btn.textContent = 'Saving…';
+      try {
+        const updated = await API.updateProfile({
+          name: document.getElementById('s-name').value,
+          email: document.getElementById('s-email').value,
+          upiId: document.getElementById('s-upi').value,
+          monthlyBudget: Number(document.getElementById('s-monthly').value) || 0,
+          weeklyBudget: Number(document.getElementById('s-weekly').value) || 0,
+          mapThreshold: Number(document.getElementById('s-threshold').value) || 500,
+        });
+        // Update cached user name so greeting/avatar refresh immediately
+        const u = getUser();
+        u.name = document.getElementById('s-name').value;
+        u.email = document.getElementById('s-email').value;
+        saveUser(u);
+        refreshAvatars();
+        showToast('Settings saved ✓', 'success');
+      } catch (err) { showToast(err.message, 'error'); }
+      btn.disabled = false; btn.textContent = 'Save Changes';
+    });
 
-  setActiveNav('settings');
-  loadSettings();
-</script>
+    // ── Dark mode toggle (moved here from dashboard header) ───────
+    document.getElementById('light-mode-toggle').addEventListener('change', function () {
+      if (this.checked) {
+        document.documentElement.classList.add('light');
+        localStorage.setItem('sm_theme', 'light');
+      } else {
+        document.documentElement.classList.remove('light');
+        localStorage.setItem('sm_theme', 'dark');
+      }
+    });
+
+    document.getElementById('delete-data-btn').addEventListener('click', () =>
+      document.getElementById('delete-modal').classList.add('open')
+    );
+
+    document.getElementById('confirm-delete-all').addEventListener('click', async () => {
+      try {
+        await API.deleteAllData();
+        document.getElementById('delete-modal').classList.remove('open');
+        showToast('All expenses deleted', 'success');
+      } catch (err) { showToast(err.message, 'error'); }
+    });
+
+    document.getElementById('delete-modal').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', logout);
+
+    setActiveNav('settings');
+    loadSettings();
+  </script>
 </body>
+
 </html>
