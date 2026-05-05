@@ -35,6 +35,11 @@ app.get('*', (req, res) => {
 // ── Connect & Start ───────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 5000;
 
+if (!process.env.MONGODB_URI) {
+  console.error('🚨 FATAL: MONGODB_URI environment variable is missing. You MUST add this to your Render Environment Variables.');
+  process.exit(1);
+}
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
