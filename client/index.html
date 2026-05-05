@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SpendMap - The Electric Ledger</title>
+<title>SpendMap</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -133,9 +133,33 @@
 </div>
 <!-- Hero Visual -->
 <div class="mt-20 relative w-full max-w-5xl">
-<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30">
-<img alt="Financial Dashboard" class="w-full object-cover aspect-video md:aspect-[21/9]" data-alt="Modern dark mode fintech dashboard interface showing violet glow charts and neon line graphs of university student spending" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_FApwUA-8P7-8OqugYmVA27B9as3HXftj9sunM-_OK6WdS3o1M0zkt0oysuHyXgWSySmD1gDfI_0lMHrbWGfvJhGiG-Es25xbxukPBr1-rXca6wlOZZNTtIDAPK0wyABj9uejTe2FuaXdofBfh2lRmCZAJaZv-oXMilPcJ6rjk8j5UfXvLb8nbL5oR7avW_FWe9l-dMKsvpCZWPFcKJtBA5mkBVqtsyX2zKGUNgNKDY7gQpQz8PSbsphEVHhfXjrWvAUoVie6BSvz"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30 bg-surface-container aspect-video md:aspect-[21/9] flex flex-col p-6 md:p-10 gap-6">
+<div class="w-1/3 md:w-1/4 h-6 md:h-8 bg-surface-container-highest rounded-lg"></div>
+<div class="flex-1 flex gap-4 md:gap-8">
+    <div class="w-1/3 flex flex-col gap-4">
+         <div class="w-full h-1/2 bg-surface-container-highest rounded-xl border border-primary/20 relative overflow-hidden flex flex-col p-4 justify-between group">
+             <span class="text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Total Spent</span>
+             <span class="text-xl md:text-3xl font-black text-on-surface">₹4,250</span>
+             <div class="absolute bottom-0 left-0 w-full h-1 power-gradient group-hover:h-2 transition-all"></div>
+         </div>
+         <div class="w-full h-1/2 bg-surface-container-highest rounded-xl border border-tertiary/20 relative overflow-hidden flex flex-col p-4 justify-between group">
+             <span class="text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Remaining</span>
+             <span class="text-xl md:text-3xl font-black text-tertiary">₹1,750</span>
+             <div class="absolute bottom-0 left-0 w-full h-1 bg-tertiary group-hover:h-2 transition-all"></div>
+         </div>
+    </div>
+    <div class="flex-1 bg-surface-container-highest rounded-xl border border-outline-variant/20 relative overflow-hidden flex items-end">
+         <div class="absolute inset-0 flex items-end justify-between px-6 pb-6 gap-2">
+             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[40%]"></div>
+             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[70%]"></div>
+             <div class="w-full bg-primary/40 hover:bg-primary/60 transition-colors rounded-t-md h-[55%]"></div>
+             <div class="w-full bg-tertiary/30 hover:bg-tertiary/50 transition-colors rounded-t-md h-[90%] border-t-2 border-tertiary"></div>
+             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[30%]"></div>
+             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[45%]"></div>
+         </div>
+    </div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
 </div>
 <!-- Floating Elements for Kinetic Depth -->
 <div class="absolute -top-10 -right-5 md:right-10 bg-surface-container-high p-4 rounded-xl shadow-2xl border border-primary/20 hidden sm:block">
@@ -172,10 +196,27 @@
 <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
 </div>
 <h3 class="text-3xl font-extrabold mb-4">Student-First Budgeting</h3>
-<p class="text-on-surface-variant text-lg max-w-md">Split your meal plans, tuition payments, and social life into distinct, manageable buckets that make sense for campus life.</p>
+<p class="text-on-surface-variant text-lg max-w-md">Easily track your late-night food runs, textbook purchases, and subscriptions without complex accounting. Just the numbers that actually matter to you.</p>
 </div>
-<div class="mt-12">
-<img alt="Feature visual" class="rounded-xl w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Minimalist glassmorphic mobile cards showing expense categories like coffee, books, and rent with violet progress bars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_4iZaMbjm5AXKVeP6AqgWmYGplr2Zaw4gMX5eEIUovryyLfqQ456h7uJkU3TIRRkQQEqRSh08TipLB83y0wE9ImT7ZnJsblrZYgeQAvLc7NGzd9t13rf0kHzuuBWSG1zmEpvmYS8oSvOaDMJp8jCQ1YpDgWyZc-819oyGHJG0zMSmRT2WAFyT7mFvhtCbi5-HIWGn4hs2WIkZ_at8jqy39oavvE78b9ZchSi2WOMRZoMjbzUXEZGYlcPsXWuzD2azOXtlJCMX9l5-"/>
+<div class="mt-12 w-full h-48 bg-surface-container-low rounded-xl border border-outline-variant/10 flex flex-col p-6 justify-center gap-6 opacity-80 group-hover:opacity-100 transition-opacity shadow-inner">
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl font-bold">🍔</div>
+        <div class="flex-1 h-3 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="w-[85%] h-full power-gradient"></div>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center text-tertiary text-xl font-bold">📚</div>
+        <div class="flex-1 h-3 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="w-[40%] h-full bg-tertiary"></div>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-xl font-bold">☕</div>
+        <div class="flex-1 h-3 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="w-[60%] h-full bg-secondary"></div>
+        </div>
+    </div>
 </div>
 </div>
 <!-- Feature 2 -->
@@ -186,8 +227,14 @@
 <h3 class="text-2xl font-extrabold mb-4">Visual Spending Maps</h3>
 <p class="text-on-surface-variant">See a geographic heat map of where your money is actually going. Is it that one coffee shop on the corner? SpendMap knows.</p>
 <div class="mt-auto pt-10">
-<div class="w-full h-32 bg-surface-container-low rounded-2xl border border-outline-variant/10 flex items-center justify-center overflow-hidden">
-<img class="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all" data-alt="Abstract map visualization with glowing violet heat nodes representing high spending locations in an urban area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdktpOcpsC0n63H4VkY9jfaPq5tcREgWhp3KIAZQOx85hgKK74ba1beQ5bnX1cofDPpldBdyiMCWBjp_9tpIZhP0j_BTj2ioCPXCZUA9VpGPFliSRG-Xex68EO8hlnRXCqCyd8UcU2lwA_NTJS90qTr0d3Mga48MfVfDptOEvzvoAH-qM-c3vYeE3AsuMOWNGMl0Fc98EAmeiSMS68So9zjqP13SU2ZJ0crc_dJNPs4HR8tXrSTg6V5RW9YmpfosaU3IQtPpQfkVZ-"/>
+<div class="w-full h-32 bg-surface-container-low rounded-2xl border border-outline-variant/10 flex items-center justify-center overflow-hidden relative">
+<div class="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-all">
+    <div class="w-24 h-24 border border-primary/30 rounded-full flex items-center justify-center animate-[pulse_2s_ease-in-out_infinite]">
+        <div class="w-12 h-12 border border-primary/50 rounded-full flex items-center justify-center bg-primary/10">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 </div>
