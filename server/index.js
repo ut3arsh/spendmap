@@ -1,8 +1,8 @@
 require('dotenv').config();
-// The system DNS server on this network refuses SRV record queries (needed for
-// mongodb+srv:// URIs). Pointing Node's c-ares resolver at Google DNS works.
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+if (process.env.NODE_ENV !== 'production' && !process.env.RENDER) {
+  const dns = require('dns');
+  dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+}
 
 const express  = require('express');
 const mongoose = require('mongoose');
