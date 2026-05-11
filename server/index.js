@@ -48,10 +48,5 @@ mongoose
     );
   })
   .catch(err => {
-    console.error('❌ MongoDB connection failed:');
-    console.error(err);
-    if (!process.env.MONGODB_URI) {
-      console.error('🚨 FATAL: MONGODB_URI environment variable is missing!');
-    }
-    process.exit(1);
+    throw err;
   });
