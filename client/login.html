@@ -100,6 +100,7 @@
     const icon = document.getElementById('theme-icon');
     if (localStorage.getItem('sm_theme') === 'light') {
       icon.textContent = 'dark_mode';
+      document.documentElement.classList.add('light');
     }
   }
   initLoginTheme();

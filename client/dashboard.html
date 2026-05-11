@@ -17,30 +17,30 @@
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo" style="display: flex; align-items: center;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</div>
   <nav class="sidebar-nav">
-    <a class="sidebar-item" data-page="dashboard" href="/dashboard.html">
+    <a class="sidebar-item" data-page="dashboard" href="dashboard.html">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
       Home
     </a>
-    <a class="sidebar-item" data-page="history" href="/history.html">
+    <a class="sidebar-item" data-page="history" href="history.html">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
       History
     </a>
-    <a class="sidebar-item" data-page="charts" href="/charts.html">
+    <a class="sidebar-item" data-page="charts" href="charts.html">
       <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Charts
     </a>
-    <a class="sidebar-item" data-page="map" href="/map.html">
+    <a class="sidebar-item" data-page="map" href="map.html">
       <svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
       Map
     </a>
-    <a class="sidebar-item" data-page="settings" href="/settings.html">
+    <a class="sidebar-item" data-page="settings" href="settings.html">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
       Settings
     </a>
   </nav>
   <!-- Sidebar user info (desktop only) -->
   <div class="sidebar-user">
-    <div class="profile-avatar" id="sidebar-avatar" onclick="window.location='/settings.html'"></div>
+    <div class="profile-avatar" id="sidebar-avatar" onclick="window.location='settings.html'"></div>
     <div class="sidebar-user-info">
       <div class="sidebar-user-name" id="sidebar-name">—</div>
       <div class="sidebar-user-email" id="sidebar-email">—</div>
@@ -63,7 +63,12 @@
         <div class="greeting-text" id="greeting-text">Good morning</div>
         <div class="greeting-sub"  id="greeting-sub">Track today's spending</div>
       </div>
-      <div class="profile-avatar" id="header-avatar" onclick="window.location='/settings.html'" title="Profile"></div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <button onclick="handleThemeToggle()" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-bg-secondary); color: var(--color-text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+          <span class="material-symbols-outlined" id="theme-icon" style="font-size: 20px;">light_mode</span>
+        </button>
+        <div class="profile-avatar" id="header-avatar" onclick="window.location='settings.html'" title="Profile"></div>
+      </div>
     </div>
 
     <!-- Nudge banner (hidden by default) -->
@@ -92,7 +97,7 @@
           </div>
         </div>
         <div id="no-budget-msg" style="margin-top:14px">
-          <a href="/settings.html" style="font-size:var(--text-xs);color:var(--color-accent)">+ Set a budget →</a>
+          <a href="settings.html" style="font-size:var(--text-xs);color:var(--color-accent)">+ Set a budget →</a>
         </div>
       </div>
 
@@ -129,10 +134,10 @@
       <div class="card card-full" style="padding:var(--space-4)">
         <div class="section-header">
           <span class="section-title">Spending Map</span>
-          <a href="/map.html" class="section-link">View All →</a>
+          <a href="map.html" class="section-link">View All →</a>
         </div>
         <div class="map-snapshot" id="map-snapshot"
-             onclick="window.location.href='/map.html'"
+             onclick="window.location.href='map.html'"
              role="button" aria-label="Open full spending map"></div>
       </div>
 
@@ -140,7 +145,7 @@
       <div class="card card-full">
         <div class="section-header">
           <span class="section-title">Recent</span>
-          <a href="/history.html" class="section-link">See All →</a>
+          <a href="history.html" class="section-link">See All →</a>
         </div>
         <div id="recent-list">
           <div style="text-align:center;padding:28px"><div class="spinner"></div></div>
@@ -194,23 +199,23 @@
 
 <!-- ── Bottom navigation (mobile/tablet only — absolute last DOM element) -->
 <nav class="bottom-nav">
-  <a class="nav-item" data-page="dashboard" href="/dashboard.html">
+  <a class="nav-item" data-page="dashboard" href="dashboard.html">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
     <span>Home</span>
   </a>
-  <a class="nav-item" data-page="history" href="/history.html">
+  <a class="nav-item" data-page="history" href="history.html">
     <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
     <span>History</span>
   </a>
-  <a class="nav-item" data-page="charts" href="/charts.html">
+  <a class="nav-item" data-page="charts" href="charts.html">
     <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     <span>Charts</span>
   </a>
-  <a class="nav-item" data-page="map" href="/map.html">
+  <a class="nav-item" data-page="map" href="map.html">
     <svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
     <span>Map</span>
   </a>
-  <a class="nav-item" data-page="settings" href="/settings.html">
+  <a class="nav-item" data-page="settings" href="settings.html">
     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
     <span>Settings</span>
   </a>
@@ -224,6 +229,23 @@
 <script src="/js/dashboard.js"></script>
 <script>
   initExpenseSheet();
+  
+  // Set initial theme icon
+  const themeIcon = document.getElementById('theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = document.documentElement.classList.contains('light') ? 'dark_mode' : 'light_mode';
+  }
+
+  function handleThemeToggle() {
+    const isLight = toggleTheme(); // From app.js
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.textContent = isLight ? 'dark_mode' : 'light_mode';
+    
+    // Update charts if they exist
+    if (typeof updateChartThemes === 'function') {
+      updateChartThemes();
+    }
+  }
 </script>
 </body>
 </html>

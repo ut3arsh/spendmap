@@ -8,10 +8,18 @@
   let currentPeriod = 'monthly';
   let barChart = null, pieChart = null, lineChart = null;
 
-  // Dark theme defaults
-  Chart.defaults.color      = '#A09BB8';
-  Chart.defaults.borderColor = '#2E2B42';
-  Chart.defaults.font.family = 'Inter, sans-serif';
+  function applyChartTheme() {
+    const style = getComputedStyle(document.documentElement);
+    Chart.defaults.color = style.getPropertyValue('--color-text-secondary').trim() || '#A09BB8';
+    Chart.defaults.borderColor = style.getPropertyValue('--color-border').trim() || '#2E2B42';
+    Chart.defaults.font.family = 'Inter, sans-serif';
+
+    if (barChart) barChart.update();
+    if (pieChart) pieChart.update();
+    if (lineChart) lineChart.update();
+  }
+  window.updateChartThemes = applyChartTheme;
+  applyChartTheme();
 
   const CAT_CHART_COLORS = {
     Food: '#F59E0B', Transport: '#3B82F6', College: '#8B5CF6',

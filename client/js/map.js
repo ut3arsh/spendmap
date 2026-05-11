@@ -19,6 +19,10 @@
       maxZoom: 19,
       subdomains: 'abcd',
     }).addTo(map);
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
   }
 
   // ── CLEAR MARKERS ─────────────────────────────────────────────

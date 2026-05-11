@@ -97,8 +97,11 @@ html.light {
   --color-bg-secondary:  #EEEAF8;
   --color-bg-tertiary:   #E4DFF5;
   --color-text-primary:  #1A1530;
-  --color-text-secondary:#5A5278;
+  --color-text-secondary:#403A60;
+  --color-text-disabled: #6D6787;
   --color-border:        #D4CEF0;
+  --color-warning:       #D97706;
+  --color-danger:        #DC2626;
 }
 
 /* 3 ── RESET & BASE ──────────────────────────────────────────── */
