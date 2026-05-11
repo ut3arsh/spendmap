@@ -12,7 +12,11 @@
 </head>
 <body>
 
-<div class="auth-page">
+<div class="auth-page" style="position: relative;">
+  <!-- Theme Toggle -->
+  <button onclick="handleThemeToggle()" style="position: absolute; top: 24px; right: 24px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-bg-secondary); color: var(--color-text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+    <span class="material-symbols-outlined" id="theme-icon" style="font-size: 20px;">light_mode</span>
+  </button>
 
   <!-- Branding -->
   <div style="text-align:center">
@@ -91,6 +95,19 @@
 <script src="/js/app.js"></script>
 <script>
   redirectIfLoggedIn();
+
+  function initLoginTheme() {
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('sm_theme') === 'light') {
+      icon.textContent = 'dark_mode';
+    }
+  }
+  initLoginTheme();
+
+  function handleThemeToggle() {
+    const isLight = toggleTheme(); // From app.js
+    document.getElementById('theme-icon').textContent = isLight ? 'dark_mode' : 'light_mode';
+  }
 
   function switchTab(tab) {
     document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.id === `tab-${tab}`));
