@@ -101,22 +101,25 @@
         </div>
       </div>
 
-      <!-- Streak card -->
-      <div class="card-sm">
-        <div class="streak-badge">
-          <div class="streak-number">
-            <span class="streak-fire" id="streak-fire">🔥</span>
-            <span id="streak-count">–</span>
+      <!-- Streak and Days Remaining Row -->
+      <div class="grid-2">
+        <!-- Streak card -->
+        <div class="card-sm">
+          <div class="streak-badge">
+            <div class="streak-number">
+              <span class="streak-fire" id="streak-fire">🔥</span>
+              <span id="streak-count">–</span>
+            </div>
+            <div class="streak-label">day streak</div>
           </div>
-          <div class="streak-label">day streak</div>
         </div>
-      </div>
 
-      <!-- Days remaining card -->
-      <div class="card-sm">
-        <div class="streak-badge">
-          <div class="streak-number" id="days-remaining">–</div>
-          <div class="streak-label">days remaining</div>
+        <!-- Days remaining card -->
+        <div class="card-sm">
+          <div class="streak-badge">
+            <div class="streak-number" id="days-remaining">–</div>
+            <div class="streak-label">days remaining</div>
+          </div>
         </div>
       </div>
 
@@ -244,6 +247,11 @@
     // Update charts if they exist
     if (typeof updateChartThemes === 'function') {
       updateChartThemes();
+    }
+    
+    // Update map snapshot if it exists
+    if (typeof updateSnapshotTheme === 'function') {
+      updateSnapshotTheme();
     }
   }
 </script>

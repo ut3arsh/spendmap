@@ -189,9 +189,7 @@
         touchZoom: false
       });
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19
-      }).addTo(mapSnapshot);
+      applySnapshotTheme();
 
       if (data.locations?.length) {
         const markerList = [];
@@ -212,6 +210,24 @@
       // Silently fail — map snapshot is non-critical
     }
   }
+
+  let snapshotTileLayer = null;
+  function applySnapshotTheme() {
+    if (!mapSnapshot) return;
+    const isLight = document.documentElement.classList.contains('light');
+    const tileUrl = isLight 
+      ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
+    if (snapshotTileLayer) {
+      mapSnapshot.removeLayer(snapshotTileLayer);
+    }
+
+    snapshotTileLayer = L.tileLayer(tileUrl, { maxZoom: 19 }).addTo(mapSnapshot);
+  }
+  
+  // Expose it globally so `updateChartThemes` or `handleThemeToggle` can call it
+  window.updateSnapshotTheme = applySnapshotTheme;
 
   // ── LOAD DASHBOARD ───────────────────────────────────────────
   async function loadDashboard() {

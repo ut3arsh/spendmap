@@ -11,19 +11,41 @@
 
   // ── INIT MAP ──────────────────────────────────────────────────
 
+  let currentTileLayer = null;
+
   function initMap() {
     map = L.map('spending-map', { center: [20.5937, 78.9629], zoom: 5 });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    applyMapTheme();
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 400);
+
+    window.addEventListener('resize', () => {
+      if (map) map.invalidateSize();
+    });
+  }
+
+  function applyMapTheme() {
+    if (!map) return;
+    const isLight = document.documentElement.classList.contains('light');
+    const tileUrl = isLight 
+      ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
+    if (currentTileLayer) {
+      map.removeLayer(currentTileLayer);
+    }
+
+    currentTileLayer = L.tileLayer(tileUrl, {
       attribution: '© OpenStreetMap contributors © CARTO',
       maxZoom: 19,
       subdomains: 'abcd',
     }).addTo(map);
-
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 200);
   }
+
+  window.updateMapThemes = applyMapTheme;
 
   // ── CLEAR MARKERS ─────────────────────────────────────────────
 
