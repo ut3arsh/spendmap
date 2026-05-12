@@ -111,6 +111,8 @@
         html.light .shadow-black\/50 { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
         html.light .bg-background { background-color: #F8F7FF; }
         html.light .from-background { --tw-gradient-from: #F8F7FF var(--tw-gradient-from-position); }
+        html.light .bg-primary\/10 { background-color: rgba(109, 40, 217, 0.15); }
+        html.light .border-primary\/50 { border-color: rgba(109, 40, 217, 0.4); }
     </style>
 <style>
     body {
@@ -163,7 +165,9 @@
 <!-- Hero Visual -->
 <div class="mt-20 relative w-full max-w-5xl">
 <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30 bg-surface-container aspect-[4/5] md:aspect-[21/9] flex flex-col p-6 md:p-10 gap-6">
-<div class="w-1/3 md:w-1/4 h-6 md:h-8 bg-surface-container-highest rounded-lg"></div>
+<div class="text-sm md:text-base font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+  <span class="material-symbols-outlined text-[18px]">calendar_month</span> This Month
+</div>
 <div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
     <div class="w-full md:w-1/3 flex flex-row md:flex-col gap-2 md:gap-4">
          <div class="w-1/2 md:w-full md:h-1/2 bg-surface-container-highest rounded-xl border border-primary/20 relative overflow-hidden flex flex-col p-3 md:p-4 justify-between group">
@@ -179,12 +183,12 @@
     </div>
     <div class="flex-1 bg-surface-container-highest rounded-xl border border-outline-variant/20 relative overflow-hidden flex items-end">
          <div class="absolute inset-0 flex items-end justify-between px-6 pb-6 gap-2">
-             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[40%]"></div>
-             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[70%]"></div>
-             <div class="w-full bg-primary/40 hover:bg-primary/60 transition-colors rounded-t-md h-[55%]"></div>
-             <div class="w-full bg-tertiary/30 hover:bg-tertiary/50 transition-colors rounded-t-md h-[90%] border-t-2 border-tertiary"></div>
-             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[30%]"></div>
-             <div class="w-full bg-primary/20 hover:bg-primary/40 transition-colors rounded-t-md h-[45%]"></div>
+             <div class="w-full bg-primary/40 hover:bg-primary/60 transition-colors rounded-t-md h-[40%]"></div>
+             <div class="w-full bg-primary/50 hover:bg-primary/70 transition-colors rounded-t-md h-[70%]"></div>
+             <div class="w-full bg-primary/70 hover:bg-primary/90 transition-colors rounded-t-md h-[55%]"></div>
+             <div class="w-full bg-tertiary/60 hover:bg-tertiary/80 transition-colors rounded-t-md h-[90%] border-t-2 border-tertiary"></div>
+             <div class="w-full bg-primary/40 hover:bg-primary/60 transition-colors rounded-t-md h-[30%]"></div>
+             <div class="w-full bg-primary/50 hover:bg-primary/70 transition-colors rounded-t-md h-[45%]"></div>
          </div>
     </div>
 </div>
