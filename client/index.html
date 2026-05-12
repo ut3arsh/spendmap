@@ -92,11 +92,13 @@
         html.light body { background-color: #F8F7FF; color: #1A1530; }
         html.light .bg-surface-container { background-color: #ffffff; }
         html.light .bg-surface-container-high { background-color: #f3f4f6; }
-        html.light .bg-surface-container-highest { background-color: #e5e7eb; }
+        html.light .bg-surface-container-highest { background-color: #ffffff; }
         html.light .bg-surface-container-low { background-color: #f9fafb; }
         html.light .bg-surface-bright { background-color: #ffffff; }
         html.light .text-on-surface { color: #111827; }
         html.light .text-on-surface-variant { color: #4b5563; }
+        html.light .text-primary { color: #6d28d9; }
+        html.light .text-tertiary { color: #be123c; }
         html.light .border-outline-variant\/30 { border-color: rgba(0,0,0,0.1); }
         html.light .border-outline-variant\/20 { border-color: rgba(0,0,0,0.08); }
         html.light .border-outline-variant\/10 { border-color: rgba(0,0,0,0.05); }
@@ -119,19 +121,19 @@
 <body class="text-on-surface selection:bg-primary/30 antialiased overflow-x-hidden">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-lg shadow-violet-500/5">
-<nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-inter antialiased tracking-tight">
-<div class="flex items-center gap-2">
+<nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4 flex justify-between items-center font-inter antialiased tracking-tight">
+<a href="index.html" class="flex items-center gap-2">
 <span class="material-symbols-outlined text-violet-400" data-icon="insights">insights</span>
-<span class="text-2xl font-black tracking-tighter text-slate-100">SpendMap</span>
-</div>
+<span class="text-xl md:text-2xl font-black tracking-tighter text-slate-100">SpendMap</span>
+</a>
 <div class="hidden md:flex gap-8 items-center">
 <a class="text-violet-400 font-semibold border-b-2 border-violet-500 transition-all" href="#">Features</a>
 </div>
-<div class="flex items-center gap-4">
-    <button onclick="toggleTheme()" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container border border-outline-variant/30 text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 shadow-sm" aria-label="Toggle Theme">
-        <span class="material-symbols-outlined text-[20px]" id="theme-icon">light_mode</span>
+<div class="flex items-center gap-2 md:gap-4">
+    <button onclick="toggleTheme()" class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-surface-container border border-outline-variant/30 text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 shadow-sm" aria-label="Toggle Theme">
+        <span class="material-symbols-outlined text-[18px] md:text-[20px]" id="theme-icon">light_mode</span>
     </button>
-    <button onclick="window.location.href='/login.html'" class="bg-violet-500 hover:bg-violet-400 text-white px-5 py-2 rounded-full font-bold transition-all active:scale-95 duration-200 ease-out shadow-lg shadow-violet-500/20">
+    <button onclick="window.location.href='/login.html'" class="bg-violet-500 hover:bg-violet-400 text-white px-4 py-2 md:px-5 rounded-full text-sm md:text-base font-bold transition-all active:scale-95 duration-200 ease-out shadow-lg shadow-violet-500/20">
         Get Started
     </button>
 </div>
@@ -160,18 +162,18 @@
 </div>
 <!-- Hero Visual -->
 <div class="mt-20 relative w-full max-w-5xl">
-<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30 bg-surface-container aspect-video md:aspect-[21/9] flex flex-col p-6 md:p-10 gap-6">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/30 bg-surface-container aspect-[4/5] md:aspect-[21/9] flex flex-col p-6 md:p-10 gap-6">
 <div class="w-1/3 md:w-1/4 h-6 md:h-8 bg-surface-container-highest rounded-lg"></div>
-<div class="flex-1 flex gap-4 md:gap-8">
-    <div class="w-1/3 flex flex-col gap-4">
-         <div class="w-full h-1/2 bg-surface-container-highest rounded-xl border border-primary/20 relative overflow-hidden flex flex-col p-4 justify-between group">
-             <span class="text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Total Spent</span>
-             <span class="text-xl md:text-3xl font-black text-on-surface">₹4,250</span>
+<div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
+    <div class="w-full md:w-1/3 flex flex-row md:flex-col gap-2 md:gap-4">
+         <div class="w-1/2 md:w-full md:h-1/2 bg-surface-container-highest rounded-xl border border-primary/20 relative overflow-hidden flex flex-col p-3 md:p-4 justify-between group">
+             <span class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Total Spent</span>
+             <span class="text-lg sm:text-xl md:text-3xl font-black text-on-surface">₹4,250</span>
              <div class="absolute bottom-0 left-0 w-full h-1 power-gradient group-hover:h-2 transition-all"></div>
          </div>
-         <div class="w-full h-1/2 bg-surface-container-highest rounded-xl border border-tertiary/20 relative overflow-hidden flex flex-col p-4 justify-between group">
-             <span class="text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Remaining</span>
-             <span class="text-xl md:text-3xl font-black text-tertiary">₹1,750</span>
+         <div class="w-1/2 md:w-full md:h-1/2 bg-surface-container-highest rounded-xl border border-tertiary/20 relative overflow-hidden flex flex-col p-3 md:p-4 justify-between group">
+             <span class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-wider">Remaining</span>
+             <span class="text-lg sm:text-xl md:text-3xl font-black text-tertiary">₹1,750</span>
              <div class="absolute bottom-0 left-0 w-full h-1 bg-tertiary group-hover:h-2 transition-all"></div>
          </div>
     </div>

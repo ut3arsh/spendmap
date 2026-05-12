@@ -139,6 +139,12 @@ function initTheme() {
   if (localStorage.getItem('sm_theme') === 'light') {
     document.documentElement.classList.add('light');
   }
+  document.addEventListener('DOMContentLoaded', () => {
+    const icon = document.getElementById('theme-icon');
+    if (icon) {
+      icon.textContent = document.documentElement.classList.contains('light') ? 'dark_mode' : 'light_mode';
+    }
+  });
 }
 
 function toggleTheme() {

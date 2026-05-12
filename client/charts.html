@@ -14,7 +14,7 @@
 
 <!-- ── Desktop Sidebar ───────────────────────────────────────── -->
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo" style="display: flex; align-items: center;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</div>
+  <a href="index.html" class="sidebar-logo" style="display: flex; align-items: center; text-decoration: none; color: inherit;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</a>
   <nav class="sidebar-nav">
     <a class="sidebar-item" data-page="dashboard" href="dashboard.html">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Home
@@ -48,7 +48,12 @@
   <div class="page-wrapper">
     <div class="page-header">
       <h1 class="page-title">Spending Overview</h1>
-      <div class="profile-avatar" id="header-avatar" onclick="window.location='settings.html'" title="Profile"></div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <button onclick="window.handleThemeToggle()" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-bg-secondary); color: var(--color-text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+          <span class="material-symbols-outlined" id="theme-icon" style="font-size: 20px;">light_mode</span>
+        </button>
+        <div class="profile-avatar" id="header-avatar" onclick="window.location='settings.html'" title="Profile"></div>
+      </div>
     </div>
 
     <div class="period-toggle">

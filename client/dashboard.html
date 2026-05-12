@@ -15,7 +15,7 @@
 
 <!-- ── Desktop Sidebar (hidden on mobile/tablet via CSS) ────── -->
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo" style="display: flex; align-items: center;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</div>
+  <a href="index.html" class="sidebar-logo" style="display: flex; align-items: center; text-decoration: none; color: inherit;"><span class="material-symbols-outlined" style="color: var(--color-accent); margin-right: 8px;">insights</span>SpendMap</a>
   <nav class="sidebar-nav">
     <a class="sidebar-item" data-page="dashboard" href="dashboard.html">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
@@ -232,12 +232,6 @@
 <script src="/js/dashboard.js"></script>
 <script>
   initExpenseSheet();
-  
-  // Set initial theme icon
-  const themeIcon = document.getElementById('theme-icon');
-  if (themeIcon) {
-    themeIcon.textContent = document.documentElement.classList.contains('light') ? 'dark_mode' : 'light_mode';
-  }
 
   function handleThemeToggle() {
     const isLight = toggleTheme(); // From app.js

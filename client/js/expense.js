@@ -332,6 +332,15 @@
   }
 
   // ── INIT (called from each page's inline script) ──────────────
+  
+  window.handleThemeToggle = function () {
+    const isLight = document.documentElement.classList.toggle('light');
+    localStorage.setItem('sm_theme', isLight ? 'light' : 'dark');
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.textContent = isLight ? 'dark_mode' : 'light_mode';
+    if (window.updateSnapshotTheme) window.updateSnapshotTheme();
+    if (window.updateMapThemes) window.updateMapThemes();
+  };
 
   window.initExpenseSheet = function () {
     initCategoryPills();
