@@ -167,7 +167,7 @@
             <div class="expense-meta">
               <span>${formatDate(e.date)}</span>
               ${e.location?.name ? `<span>📍 ${e.location.name}</span>` : ''}
-              ${e.note ? `<span>${e.note.slice(0, 30)}${e.note.length > 30 ? '…' : ''}</span>` : ''}
+              ${e.note ? `<span class="note-pill">${e.note.slice(0, 30)}${e.note.length > 30 ? '…' : ''}</span>` : ''}
             </div>
           </div>
           <div class="expense-amount">${formatCurrency(e.amount)}</div>
@@ -202,7 +202,12 @@
           // Staggered fade-in
           setTimeout(() => m.setStyle({ fillOpacity: 0.9, opacity: 1 }), 100 + i * 50);
         });
-        mapSnapshot.fitBounds(L.featureGroup(markerList).getBounds(), { padding: [20, 20] });
+        if (markerList.length === 1) {
+          const loc = data.locations[0];
+          mapSnapshot.setView([loc.lat, loc.lng], 13);
+        } else {
+          mapSnapshot.fitBounds(L.featureGroup(markerList).getBounds(), { padding: [20, 20], maxZoom: 14 });
+        }
       } else {
         mapSnapshot.setView([20.5937, 78.9629], 5);
       }

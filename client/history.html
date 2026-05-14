@@ -197,7 +197,7 @@
             <div class="expense-meta">
               <span>${formatDate(e.date)}</span>
               ${e.location?.name ? `<span>📍 ${e.location.name}</span>` : ''}
-              ${e.note ? `<span>${e.note}</span>` : ''}
+              ${e.note ? `<span class="note-pill">${e.note}</span>` : ''}
             </div>
           </div>
           <div class="expense-amount">${formatCurrency(e.amount)}</div>

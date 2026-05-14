@@ -133,8 +133,7 @@ router.get('/map', async (req, res) => {
     const user  = await User.findById(req.userId);
     const query = {
       userId:        req.userId,
-      'location.lat': { $exists: true, $ne: null },
-      'location.name': { $ne: '' }
+      'location.lat': { $exists: true, $ne: null }
     };
     if (period) {
       const { start, end } = getDateRange(period, tzOff);

@@ -138,9 +138,6 @@
       if (!map) initMap();
       clearMarkers();
 
-      const threshold = data.threshold || 500;
-      document.getElementById('threshold-input').value = threshold;
-
       renderMarkers(data.locations || []);
       renderLocationList(data.locations || []);
     } catch (err) {
@@ -148,18 +145,7 @@
     }
   }
 
-  // ── THRESHOLD EDITOR ──────────────────────────────────────────
-
-  document.getElementById('threshold-input')?.addEventListener('change', async e => {
-    const val = parseInt(e.target.value, 10);
-    if (!val || val < 1) return;
-    try {
-      await API.updateProfile({ mapThreshold: val });
-      loadMap();
-    } catch (err) {
-      showToast(err.message, 'error');
-    }
-  });
+  // ── THRESHOLD EDITOR REMOVED ──────────────────────────────────
 
   // ── PERIOD TOGGLE ─────────────────────────────────────────────
 

@@ -10,9 +10,16 @@
 
   function applyChartTheme() {
     const style = getComputedStyle(document.documentElement);
+    const isLight = document.documentElement.classList.contains('light');
     Chart.defaults.color = style.getPropertyValue('--color-text-secondary').trim() || '#A09BB8';
     Chart.defaults.borderColor = style.getPropertyValue('--color-border').trim() || '#2E2B42';
     Chart.defaults.font.family = 'Inter, sans-serif';
+
+    Chart.defaults.plugins.tooltip.backgroundColor = isLight ? '#FFFFFF' : '#1A1A24';
+    Chart.defaults.plugins.tooltip.titleColor = isLight ? '#111827' : '#F1F0FF';
+    Chart.defaults.plugins.tooltip.bodyColor = isLight ? '#374151' : '#A09BB8';
+    Chart.defaults.plugins.tooltip.borderColor = style.getPropertyValue('--color-border').trim() || '#2E2B42';
+    Chart.defaults.plugins.tooltip.borderWidth = 1;
 
     if (barChart) barChart.update();
     if (pieChart) pieChart.update();
@@ -76,6 +83,7 @@
         scales: {
           y: {
             beginAtZero: true,
+            grace: '10%',
             ticks: { callback: v => '₹' + Number(v).toLocaleString('en-IN') }
           }
         }
@@ -193,6 +201,21 @@
         }
       }
     });
+
+    let emptyMsg = document.getElementById('curve-empty-msg');
+    if (data.length < 3) {
+      if (!emptyMsg) {
+        emptyMsg = document.createElement('div');
+        emptyMsg.id = 'curve-empty-msg';
+        emptyMsg.className = 'text-muted text-sm mt-4';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.textContent = 'Keep adding expenses to see your spending curve build.';
+        ctx.parentElement.appendChild(emptyMsg);
+      }
+      emptyMsg.style.display = 'block';
+    } else if (emptyMsg) {
+      emptyMsg.style.display = 'none';
+    }
   }
 
   // ── LOAD ALL ──────────────────────────────────────────────────

@@ -86,9 +86,9 @@
               Upload a photo or your initial will be shown.
             </div>
             <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-              <label class="btn btn-secondary btn-sm" for="photo-input" style="cursor:pointer">
-                📷 Choose Photo
-              </label>
+              <label class="btn btn-outline btn-sm" for="photo-input" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+              <span class="material-symbols-outlined" style="font-size:18px">photo_camera</span> Choose Photo
+            </label>
               <input type="file" id="photo-input" accept="image/*" style="display:none">
               <button class="btn btn-secondary btn-sm" id="remove-photo-btn" style="display:none">
                 Remove
@@ -179,7 +179,7 @@
         <button class="btn btn-danger btn-full" id="delete-data-btn" style="margin-bottom:var(--space-3)">
           Delete All Expenses
         </button>
-        <button class="btn btn-secondary btn-full" id="logout-btn">
+        <button class="btn btn-outline btn-full" id="logout-btn">
           Log Out
         </button>
       </div>
